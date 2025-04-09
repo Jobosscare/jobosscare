@@ -802,65 +802,35 @@ targetContent.classList.add('active');
 <div class="bg-white p-10 rounded-xl shadow-lg h-full">
 <div class="flex items-center mb-6">
 <div class="w-12 h-12 flex items-center justify-center bg-gradient-to-r from-primary to-secondary rounded-full mr-4 text-white">
-<i class="ri-file-upload-line ri-lg"></i>
+<i class="ri-whatsapp-line ri-lg"></i>
 </div>
-<h3 class="text-2xl font-bold text-primary">Envía tu CV</h3>
+<h3 class="text-2xl font-bold text-primary">Contacta por WhatsApp</h3>
 </div>
-<form class="space-y-6" id="cv-form" action="mailto:hola@joboss.es" method="post" enctype="multipart/form-data">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<div>
-<label for="nombre" class="block text-gray-700 mb-2 font-medium">Nombre</label>
-<input type="text" id="nombre" name="nombre" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary focus:ring-opacity-30 transition-all" placeholder="Tu nombre" required>
-</div>
-<div>
-<label for="apellidos" class="block text-gray-700 mb-2 font-medium">Apellidos</label>
-<input type="text" id="apellidos" name="apellidos" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary focus:ring-opacity-30 transition-all" placeholder="Tus apellidos" required>
-</div>
+<div class="space-y-6">
+<p class="text-gray-700">Envíanos tu CV o consulta directamente a través de WhatsApp. Te responderemos a la mayor brevedad posible.</p>
+<div class="bg-green-50 p-6 rounded-lg border border-green-200">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 flex items-center justify-center bg-green-500 rounded-full mr-4 text-white">
+<i class="ri-whatsapp-fill ri-lg"></i>
 </div>
 <div>
-<label for="email" class="block text-gray-700 mb-2 font-medium">Email</label>
-<input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary focus:ring-opacity-30 transition-all" placeholder="tu@email.com" required>
-</div>
-<div>
-<label for="telefono" class="block text-gray-700 mb-2 font-medium">Teléfono</label>
-<input type="tel" id="telefono" name="telefono" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary focus:ring-opacity-30 transition-all" placeholder="+34 600 000 000" required>
-</div>
-<div>
-<label for="perfil" class="block text-gray-700 mb-2 font-medium">Perfil profesional</label>
-<div class="relative">
-<select id="perfil" name="perfil" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary focus:ring-opacity-30 transition-all appearance-none pr-10" required>
-<option value="">Selecciona tu perfil</option>
-<option value="enfermeria">Enfermería</option>
-<option value="auxiliar">Auxiliar de enfermería</option>
-<option value="cuidador">Cuidador/a</option>
-<option value="fisio">Fisioterapeuta</option>
-<option value="medico">Médico</option>
-<option value="otro">Otro</option>
-</select>
-<div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-<i class="ri-arrow-down-s-line text-gray-400"></i>
+<h4 class="font-bold text-gray-800">WhatsApp directo</h4>
 </div>
 </div>
+<p class="text-gray-700 mb-6">Indícanos tu nombre, perfil profesional y experiencia para agilizar el proceso.</p>
+<div class="flex items-start mb-6">
+<input type="checkbox" id="privacidad-whatsapp" name="privacidad" class="custom-checkbox mr-3 mt-1" required>
+<label for="privacidad-whatsapp" class="text-sm text-gray-600">Acepto la <a href="#privacidad" id="privacidad-link-whatsapp" class="text-primary hover:underline">política de privacidad</a> y el tratamiento de mis datos personales.</label>
 </div>
-<div>
-<label for="cv" class="block text-gray-700 mb-2 font-medium">Adjunta tu CV</label>
-<div class="flex items-center justify-center w-full">
-<label for="cv" class="flex flex-col items-center justify-center w-full h-36 border-2 border-primary border-dashed rounded-lg cursor-pointer bg-blue-50 hover:bg-blue-100 transition-colors">
-<div class="flex flex-col items-center justify-center pt-5 pb-6">
-<i class="ri-upload-cloud-line ri-2x text-primary mb-3"></i>
-<p class="mb-2 text-sm text-gray-700"><span class="font-semibold">Haz clic para subir</span> o arrastra y suelta</p>
-<p class="text-xs text-gray-500">PDF, DOC o DOCX (Máx. 2MB)</p>
+<a href="https://wa.me/34665415553?text=Hola,%20estoy%20interesado/a%20en%20trabajar%20con%20Joboss%20Care.%20Me%20gustaría%20recibir%20más%20información." target="_blank" id="whatsapp-button" class="bg-green-500 text-white px-6 py-4 !rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition-colors w-full shadow-lg hover:shadow-xl flex items-center justify-center opacity-50 cursor-not-allowed">
+<i class="ri-whatsapp-fill ri-lg mr-2"></i>
+Contactar por WhatsApp
+</a>
 </div>
-<input id="cv" name="cv" type="file" class="hidden" required />
-</label>
+<div class="mt-6 text-sm text-gray-600">
+<p>Al contactarnos por WhatsApp, aceptas nuestra <a href="#privacidad" id="privacidad-link-cv" class="text-primary hover:underline">política de privacidad</a> y el tratamiento de tus datos personales.</p>
 </div>
 </div>
-<div class="flex items-start">
-<input type="checkbox" id="privacidad" name="privacidad" class="custom-checkbox mr-3 mt-1" required>
-<label for="privacidad" class="text-sm text-gray-600">Acepto la <a href="#privacidad" id="privacidad-link-cv" class="text-primary hover:underline">política de privacidad</a> y el tratamiento de mis datos personales.</label>
-</div>
-<button type="submit" class="bg-primary text-white px-6 py-4 !rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition-colors w-full shadow-lg hover:shadow-xl">Enviar solicitud</button>
-</form>
 </div>
 </div>
 </div>
@@ -927,33 +897,65 @@ targetContent.classList.add('active');
 <div class="bg-white p-8 rounded-xl shadow-lg">
 <div class="flex items-center mb-8">
 <div class="w-12 h-12 flex items-center justify-center bg-gradient-to-r from-primary to-secondary rounded-full mr-4 text-white">
-<i class="ri-message-3-line ri-lg"></i>
+<i class="ri-whatsapp-line ri-lg"></i>
 </div>
-<h3 class="text-2xl font-bold text-primary">Envíanos un mensaje</h3>
+<h3 class="text-2xl font-bold text-primary">Contacta por WhatsApp</h3>
 </div>
-<form class="space-y-6" id="contacto-form" action="mailto:hola@joboss.es" method="post" enctype="text/plain">
-<div class="mb-6">
-<label for="nombre-contacto" class="block text-gray-700 mb-2 font-medium">Nombre completo</label>
-<input type="text" id="nombre-contacto" name="nombre" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary focus:ring-opacity-30 transition-all" placeholder="Tu nombre y apellidos" required>
+<div class="space-y-6">
+<p class="text-gray-700">¿Necesitas contratar personal sanitario para tu empresa o institución? Contacta directamente con nuestro equipo de selección a través de WhatsApp y recibe atención personalizada inmediata.</p>
+<div class="bg-green-50 p-6 rounded-lg border border-green-200">
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 flex items-center justify-center bg-green-500 rounded-full mr-4 text-white">
+<i class="ri-whatsapp-fill ri-lg"></i>
 </div>
-<div class="mb-6">
-<label for="email-contacto" class="block text-gray-700 mb-2 font-medium">Email</label>
-<input type="email" id="email-contacto" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary focus:ring-opacity-30 transition-all" placeholder="tu@email.com" required>
+<div>
+<h4 class="font-bold text-gray-800">WhatsApp Empresas</h4>
+<p class="text-gray-600">Respuesta rápida en horario laboral</p>
 </div>
-<div class="mb-6">
-<label for="asunto" class="block text-gray-700 mb-2 font-medium">Asunto</label>
-<input type="text" id="asunto" name="asunto" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary focus:ring-opacity-30 transition-all" placeholder="Asunto de tu mensaje" required>
 </div>
-<div class="mb-6">
-<label for="mensaje" class="block text-gray-700 mb-2 font-medium">Mensaje</label>
-<textarea id="mensaje" name="mensaje" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary focus:ring-opacity-30 transition-all" placeholder="Escribe tu mensaje aquí..." required></textarea>
-</div>
+<p class="text-gray-700 mb-6">Indícanos el nombre de tu empresa, el tipo de profesionales que necesitas y cualquier requisito específico para agilizar el proceso.</p>
 <div class="flex items-start mb-6">
-<input type="checkbox" id="privacidad-contacto" name="privacidad" class="custom-checkbox mr-3 mt-1" required>
-<label for="privacidad-contacto" class="text-sm text-gray-600">Acepto la <a href="#privacidad" id="privacidad-link-form" class="text-primary hover:underline">política de privacidad</a> y el tratamiento de mis datos personales.</label>
+<input type="checkbox" id="privacidad-contacto-whatsapp" name="privacidad" class="custom-checkbox mr-3 mt-1" required>
+<label for="privacidad-contacto-whatsapp" class="text-sm text-gray-600">Acepto la <a href="#privacidad" id="privacidad-link-form" class="text-primary hover:underline">política de privacidad</a> y el tratamiento de mis datos personales.</label>
 </div>
-<button type="submit" class="bg-primary text-white px-6 py-4 !rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition-colors w-full shadow-lg hover:shadow-xl">Enviar mensaje</button>
-</form>
+<a href="https://wa.me/34665415553?text=Hola,%20soy%20de%20la%20empresa%20[Nombre]%20y%20estamos%20interesados%20en%20contratar%20personal%20sanitario.%20Necesitamos%20información%20sobre%20sus%20servicios." target="_blank" id="whatsapp-empresa-button" class="bg-green-500 text-white px-6 py-4 !rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition-colors w-full shadow-lg hover:shadow-xl flex items-center justify-center opacity-50 cursor-not-allowed">
+<i class="ri-whatsapp-fill ri-lg mr-2"></i>
+Contactar por WhatsApp
+</a>
+</div>
+<div class="mt-8 bg-blue-50 p-6 rounded-lg border border-blue-100">
+<h4 class="font-bold text-gray-800 mb-3">¿Por qué contactar por WhatsApp?</h4>
+<ul class="space-y-3">
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center bg-primary rounded-full mr-3 shrink-0 text-white mt-0.5">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-700">Respuesta inmediata en horario laboral</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center bg-primary rounded-full mr-3 shrink-0 text-white mt-0.5">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-700">Atención personalizada para tu empresa</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center bg-primary rounded-full mr-3 shrink-0 text-white mt-0.5">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-700">Presupuesto adaptado a tus necesidades</span>
+</li>
+<li class="flex items-start">
+<div class="w-6 h-6 flex items-center justify-center bg-primary rounded-full mr-3 shrink-0 text-white mt-0.5">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-700">Soluciones rápidas para necesidades urgentes</span>
+</li>
+</ul>
+</div>
+<div class="mt-6 text-sm text-gray-600">
+<p>Al contactarnos por WhatsApp, aceptas nuestra <a href="#privacidad" id="privacidad-link-empresa" class="text-primary hover:underline">política de privacidad</a> y el tratamiento de tus datos personales.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1062,102 +1064,53 @@ behavior: 'smooth'
 }
 });
 });
-// Form submission handling for CV form
-document.getElementById('cv-form').addEventListener('submit', function(e) {
+// Eliminado el código de manejo del formulario CV ya que ahora usamos WhatsApp
+document.getElementById('privacidad-link-cv').addEventListener('click', function(e) {
 e.preventDefault();
-const form = this;
-const formData = new FormData(form);
-// Simulación de envío de email (en producción se conectaría con un backend real)
-// Mostrar mensaje de carga
-const loadingMessage = document.createElement('div');
-loadingMessage.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center';
-loadingMessage.innerHTML = `
-  <div class="bg-white p-6 rounded-lg shadow-xl max-w-md w-full text-center">
-    <div class="animate-spin w-12 h-12 border-4 border-primary border-t-transparent rounded-full mx-auto mb-4"></div>
-    <p class="text-gray-700">Enviando información...</p>
-  </div>
-`;
-document.body.appendChild(loadingMessage);
-// Simular envío (en producción, aquí iría la llamada al backend)
-setTimeout(() => {
-  // Eliminar mensaje de carga
-  loadingMessage.remove();
-  
-  // Mostrar mensaje de éxito
-  const successMessage = document.createElement('div');
-  successMessage.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center';
-  successMessage.innerHTML = `
-    <div class="bg-white p-6 rounded-lg shadow-xl max-w-md w-full text-center">
-      <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full mx-auto mb-4 flex items-center justify-center">
-        <i class="ri-check-line ri-2x"></i>
-      </div>
-      <h3 class="text-xl font-bold text-gray-800 mb-2">¡Enviado con éxito!</h3>
-      <p class="text-gray-600 mb-6">Hemos recibido tu CV correctamente. Nos pondremos en contacto contigo lo antes posible.</p>
-      <button class="bg-primary text-white px-6 py-2 !rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition-colors">Aceptar</button>
-    </div>
-  `;
-  document.body.appendChild(successMessage);
-  
-  // Cerrar el mensaje al hacer clic en el botón
-  successMessage.querySelector('button').addEventListener('click', () => {
-    successMessage.remove();
-  });
-  
-  // Limpiar el formulario
-  form.reset();
-}, 1500);
-// En un entorno real, aquí se enviaría el formData a un endpoint del servidor
-// que procesaría los datos y enviaría el email con el archivo adjunto
+document.getElementById('privacidad-link').click();
 });
-// Form submission handling for contact form
-document.getElementById('contacto-form').addEventListener('submit', function(e) {
-e.preventDefault();
-const form = this;
-const formData = new FormData(form);
-// Simulación de envío de email (en producción se conectaría con un backend real)
-// Mostrar mensaje de carga
-const loadingMessage = document.createElement('div');
-loadingMessage.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center';
-loadingMessage.innerHTML = `
-  <div class="bg-white p-6 rounded-lg shadow-xl max-w-md w-full text-center">
-    <div class="animate-spin w-12 h-12 border-4 border-primary border-t-transparent rounded-full mx-auto mb-4"></div>
-    <p class="text-gray-700">Enviando mensaje...</p>
-  </div>
-`;
-document.body.appendChild(loadingMessage);
-// Simular envío (en producción, aquí iría la llamada al backend)
-setTimeout(() => {
-  // Eliminar mensaje de carga
-  loadingMessage.remove();
-  
-  // Mostrar mensaje de éxito
-  const successMessage = document.createElement('div');
-  successMessage.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center';
-  successMessage.innerHTML = `
-    <div class="bg-white p-6 rounded-lg shadow-xl max-w-md w-full text-center">
-      <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full mx-auto mb-4 flex items-center justify-center">
-        <i class="ri-check-line ri-2x"></i>
+// WhatsApp empresa button functionality
+document.getElementById('privacidad-contacto-whatsapp').addEventListener('change', function() {
+  const whatsappButton = document.getElementById('whatsapp-empresa-button');
+  if (this.checked) {
+    whatsappButton.classList.remove('opacity-50', 'cursor-not-allowed');
+  } else {
+    whatsappButton.classList.add('opacity-50', 'cursor-not-allowed');
+  }
+});
+// Verificar checkbox antes de permitir clic en botón de WhatsApp para empresas
+document.getElementById('whatsapp-empresa-button').addEventListener('click', function(e) {
+  const checkbox = document.getElementById('privacidad-contacto-whatsapp');
+  if (!checkbox.checked) {
+    e.preventDefault();
+    
+    // Crear mensaje de advertencia
+    const warningMessage = document.createElement('div');
+    warningMessage.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center';
+    warningMessage.innerHTML = `
+      <div class="bg-white p-6 rounded-lg shadow-xl max-w-md w-full text-center">
+        <div class="w-16 h-16 bg-yellow-100 text-yellow-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+          <i class="ri-error-warning-line ri-2x"></i>
+        </div>
+        <h3 class="text-xl font-bold text-gray-800 mb-2">Atención</h3>
+        <p class="text-gray-600 mb-6">Debes aceptar la política de privacidad para contactar por WhatsApp.</p>
+        <button class="bg-primary text-white px-6 py-2 !rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition-colors">Aceptar</button>
       </div>
-      <h3 class="text-xl font-bold text-gray-800 mb-2">¡Mensaje enviado!</h3>
-      <p class="text-gray-600 mb-6">Hemos recibido tu mensaje correctamente. Te responderemos a la mayor brevedad posible.</p>
-      <button class="bg-primary text-white px-6 py-2 !rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition-colors">Aceptar</button>
-    </div>
-  `;
-  document.body.appendChild(successMessage);
-  
-  // Cerrar el mensaje al hacer clic en el botón
-  successMessage.querySelector('button').addEventListener('click', () => {
-    successMessage.remove();
-  });
-  
-  // Limpiar el formulario
-  form.reset();
-}, 1500);
-// En un entorno real, aquí se enviaría el formData a un endpoint del servidor
-// que procesaría los datos y enviaría el email
+    `;
+    document.body.appendChild(warningMessage);
+    
+    // Cerrar el mensaje al hacer clic en el botón
+    warningMessage.querySelector('button').addEventListener('click', () => {
+      warningMessage.remove();
+    });
+  }
 });
 // Add event listeners for privacy policy links in forms
 document.getElementById('privacidad-link-form').addEventListener('click', function(e) {
+e.preventDefault();
+document.getElementById('privacidad-link').click();
+});
+document.getElementById('privacidad-link-empresa').addEventListener('click', function(e) {
 e.preventDefault();
 document.getElementById('privacidad-link').click();
 });
@@ -1165,9 +1118,30 @@ document.getElementById('privacidad-link-cv').addEventListener('click', function
 e.preventDefault();
 document.getElementById('privacidad-link').click();
 });
+document.getElementById('privacidad-link-whatsapp').addEventListener('click', function(e) {
+e.preventDefault();
+document.getElementById('privacidad-link').click();
+});
 document.getElementById('privacidad-link-newsletter').addEventListener('click', function(e) {
 e.preventDefault();
 document.getElementById('privacidad-link').click();
+});
+// Habilitar/deshabilitar botón de WhatsApp según checkbox
+document.getElementById('privacidad-whatsapp').addEventListener('change', function() {
+const whatsappButton = document.getElementById('whatsapp-button');
+if (this.checked) {
+whatsappButton.classList.remove('opacity-50', 'cursor-not-allowed');
+} else {
+whatsappButton.classList.add('opacity-50', 'cursor-not-allowed');
+}
+});
+// Verificar checkbox antes de permitir clic en botón de WhatsApp
+document.getElementById('whatsapp-button').addEventListener('click', function(e) {
+const checkbox = document.getElementById('privacidad-whatsapp');
+if (!checkbox.checked) {
+e.preventDefault();
+alert('Debes aceptar la política de privacidad para continuar');
+}
 });
 // Modal functionality for legal pages
 function createModal(title, content) {
