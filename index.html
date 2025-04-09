@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joboss Care - Selección de Personal Sanitario</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#1B3C59',secondary:'#2C5545'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Roboto', sans-serif;
+}
+.font-audiowide {
+font-family: 'Audiowide', cursive;
+}
+.hero-section {
+background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0.7) 75%, rgba(255, 255, 255, 0.3) 100%), url('https://public.readdy.ai/ai/img_res/53fadbf035b4415664d5618215fbef85.jpg');
+background-size: cover;
+background-position: center;
+}
+input:focus, textarea:focus {
+outline: none;
+border-color: #1B3C59;
+}
+.custom-checkbox {
+appearance: none;
+-webkit-appearance: none;
+width: 20px;
+height: 20px;
+border: 2px solid #1B3C59;
+border-radius: 4px;
+outline: none;
+cursor: pointer;
+position: relative;
+}
+.custom-checkbox:checked {
+background-color: #1B3C59;
+}
+.custom-checkbox:checked::after {
+content: '';
+position: absolute;
+width: 5px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+top: 2px;
+left: 6px;
+transform: rotate(45deg);
+}
+.custom-switch {
+position: relative;
+display: inline-block;
+width: 50px;
+height: 24px;
+}
+.custom-switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #ccc;
+transition: .4s;
+border-radius: 24px;
+}
+.slider:before {
+position: absolute;
+content: "";
+height: 16px;
+width: 16px;
+left: 4px;
+bottom: 4px;
+background-color: white;
+transition: .4s;
+border-radius: 50%;
+}
+input:checked + .slider {
+background-color: #1B3C59;
+}
+input:checked + .slider:before {
+transform: translateX(26px);
+}
+</style>
+</head>
+<body class="bg-white">
+<!-- Header -->
+<header class="sticky top-0 bg-white shadow-md z-50">
+<div class="container mx-auto px-4 py-4 flex items-center justify-between">
+<div class="flex items-center">
+<h1 class="text-2xl md:text-3xl font-audiowide text-primary">Joboss Care</h1>
+</div>
+<!-- Desktop Navigation -->
+<nav class="hidden md:flex items-center space-x-8">
+<a href="#inicio" class="text-gray-700 hover:text-primary font-medium transition-colors">Inicio</a>
+<a href="#servicios" class="text-gray-700 hover:text-primary font-medium transition-colors">Servicios</a>
+<a href="#nosotros" class="text-gray-700 hover:text-primary font-medium transition-colors">Quiénes Somos</a>
+<a href="#ventajas" class="text-gray-700 hover:text-primary font-medium transition-colors">Ventajas</a>
+<a href="#profesionales" class="text-gray-700 hover:text-primary font-medium transition-colors">Profesionales</a>
+<a href="#contacto" class="text-gray-700 hover:text-primary font-medium transition-colors">Contacto</a>
+<a href="#trabaja" class="bg-primary text-white px-5 py-2 !rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition-colors">Trabaja con nosotros</a>
+</nav>
+<!-- Mobile Menu Button -->
+<div class="md:hidden flex items-center">
+<button id="mobile-menu-button" class="w-10 h-10 flex items-center justify-center text-gray-700">
+<i class="ri-menu-line ri-2x"></i>
+</button>
+</div>
+</div>
+<!-- Mobile Navigation -->
+<div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
+<div class="container mx-auto px-4 py-3 flex flex-col space-y-4">
+<a href="#inicio" class="text-gray-700 hover:text-primary font-medium py-2 transition-colors">Inicio</a>
+<a href="#servicios" class="text-gray-700 hover:text-primary font-medium py-2 transition-colors">Servicios</a>
+<a href="#nosotros" class="text-gray-700 hover:text-primary font-medium py-2 transition-colors">Quiénes Somos</a>
+<a href="#ventajas" class="text-gray-700 hover:text-primary font-medium py-2 transition-colors">Ventajas</a>
+<a href="#profesionales" class="text-gray-700 hover:text-primary font-medium py-2 transition-colors">Profesionales</a>
+<a href="#contacto" class="text-gray-700 hover:text-primary font-medium py-2 transition-colors">Contacto</a>
+<a href="#trabaja" class="bg-primary text-white px-5 py-2 !rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition-colors inline-block text-center">Trabaja con nosotros</a>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section id="inicio" class="hero-section w-full py-20 md:py-32">
+<div class="container mx-auto px-4 w-full">
+<div class="max-w-2xl">
+<h2 class="text-3xl md:text-5xl font-bold text-primary mb-6">Expertos en selección de personal sanitario</h2>
+<p class="text-lg md:text-xl text-gray-700 mb-8">Conectamos a los mejores profesionales sanitarios con las instituciones que más los necesitan. Cuidamos de quienes cuidan.</p>
+<div class="flex flex-col sm:flex-row gap-4">
+<a href="#servicios" class="bg-primary text-white px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition-colors text-center">Nuestros servicios</a>
+<a href="#contacto" class="border-2 border-primary text-primary px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-primary hover:text-white transition-colors text-center">Contactar ahora</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Section -->
+<section id="servicios" class="py-20 bg-gradient-to-b from-gray-50 to-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<span class="inline-block px-4 py-1 bg-blue-100 text-primary rounded-full text-sm font-medium mb-4">SOLUCIONES PROFESIONALES</span>
+<h2 class="text-4xl font-bold text-primary mb-6">Nuestros Servicios</h2>
+<p class="text-lg text-gray-600 max-w-3xl mx-auto">Ofrecemos soluciones integrales para la gestión del talento en el sector sanitario, adaptadas a las necesidades específicas de cada cliente.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Service 1 -->
+<div class="bg-white p-10 rounded-xl shadow-lg hover:shadow-xl transition-shadow transform hover:-translate-y-2 duration-300 border-t-4 border-primary">
+<div class="w-20 h-20 flex items-center justify-center bg-blue-100 rounded-full mb-8 mx-auto">
+<i class="ri-search-line ri-2x text-primary"></i>
+</div>
+<h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Reclutamiento</h3>
+<p class="text-gray-600 text-center">Identificamos a los mejores profesionales sanitarios según las necesidades específicas de cada institución, garantizando la idoneidad técnica y humana.</p>
+<div class="mt-8 text-center">
+<a href="#contacto" class="inline-flex items-center text-primary font-medium hover:underline">
+Saber más <i class="ri-arrow-right-line ml-2"></i>
+</a>
+</div>
+</div>
+<!-- Service 2 -->
+<div class="bg-white p-10 rounded-xl shadow-lg hover:shadow-xl transition-shadow transform hover:-translate-y-2 duration-300 border-t-4 border-primary">
+<div class="w-20 h-20 flex items-center justify-center bg-blue-100 rounded-full mb-8 mx-auto">
+<i class="ri-user-search-line ri-2x text-primary"></i>
+</div>
+<h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Selección de Personal</h3>
+<p class="text-gray-600 text-center">Realizamos un exhaustivo proceso de evaluación para asegurar que cada candidato cumple con los requisitos técnicos y valores humanos necesarios.</p>
+<div class="mt-8 text-center">
+<a href="#contacto" class="inline-flex items-center text-primary font-medium hover:underline">
+Saber más <i class="ri-arrow-right-line ml-2"></i>
+</a>
+</div>
+</div>
+<!-- Service 3 -->
+<div class="bg-white p-10 rounded-xl shadow-lg hover:shadow-xl transition-shadow transform hover:-translate-y-2 duration-300 border-t-4 border-primary">
+<div class="w-20 h-20 flex items-center justify-center bg-blue-100 rounded-full mb-8 mx-auto">
+<i class="ri-briefcase-4-line ri-2x text-primary"></i>
+</div>
+<h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Asesoría en RRHH</h3>
+<p class="text-gray-600 text-center">Ofrecemos consultoría especializada en la gestión de recursos humanos para el sector sanitario, optimizando procesos y mejorando la retención de talento.</p>
+<div class="mt-8 text-center">
+<a href="#contacto" class="inline-flex items-center text-primary font-medium hover:underline">
+Saber más <i class="ri-arrow-right-line ml-2"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="mt-16 text-center">
+<a href="#contacto" class="bg-primary text-white px-10 py-4 !rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition-colors inline-block shadow-lg hover:shadow-xl">Solicitar información</a>
+</div>
+</div>
+</section>
+<!-- About Us Section -->
+<section id="nosotros" class="py-16">
+<div class="container mx-auto px-4">
+<div class="flex flex-col md:flex-row items-center gap-12">
+<div class="md:w-1/2">
+<img src="https://public.readdy.ai/ai/img_res/d348ea0e2c87634ea5ed1dcc1e8d2a0c.jpg" alt="Equipo de Joboss Care" class="rounded-lg shadow-lg w-full h-auto object-cover">
+</div>
+<div class="md:w-1/2">
+<h2 class="text-3xl font-bold text-primary mb-6">Quiénes Somos</h2>
+<p class="text-gray-700 mb-6">En <span class="font-audiowide text-primary">Joboss Care</span> somos expertos en la selección de personal sanitario con más de 10 años de experiencia en el sector. Nuestro equipo multidisciplinar está formado por profesionales con amplia trayectoria en recursos humanos y conocimiento profundo del ámbito sanitario.</p>
+<p class="text-gray-700 mb-8">Nuestra misión es conectar a los mejores profesionales sanitarios con las instituciones que los necesitan, contribuyendo así a mejorar la calidad asistencial y el bienestar de los pacientes.</p>
+<div class="grid grid-cols-2 gap-6">
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center bg-blue-100 rounded-full mr-4 shrink-0">
+<i class="ri-heart-pulse-line text-primary"></i>
+</div>
+<div>
+<h3 class="font-bold text-gray-800 mb-2">Compromiso</h3>
+<p class="text-gray-600 text-sm">Nos involucramos en cada proceso para garantizar los mejores resultados.</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center bg-blue-100 rounded-full mr-4 shrink-0">
+<i class="ri-shield-check-line text-primary"></i>
+</div>
+<div>
+<h3 class="font-bold text-gray-800 mb-2">Profesionalidad</h3>
+<p class="text-gray-600 text-sm">Aplicamos los más altos estándares en todos nuestros procesos.</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center bg-blue-100 rounded-full mr-4 shrink-0">
+<i class="ri-team-line text-primary"></i>
+</div>
+<div>
+<h3 class="font-bold text-gray-800 mb-2">Empatía</h3>
+<p class="text-gray-600 text-sm">Entendemos las necesidades de candidatos e instituciones.</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center bg-blue-100 rounded-full mr-4 shrink-0">
+<i class="ri-medal-line text-primary"></i>
+</div>
+<div>
+<h3 class="font-bold text-gray-800 mb-2">Excelencia</h3>
+<p class="text-gray-600 text-sm">Buscamos siempre superar las expectativas de nuestros clientes.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Ventajas Section -->
+<section id="ventajas" class="py-20 bg-gradient-to-b from-white to-blue-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<span class="inline-block px-4 py-1 bg-blue-100 text-primary rounded-full text-sm font-medium mb-4">POR QUÉ ELEGIRNOS</span>
+<h2 class="text-4xl font-bold text-primary mb-6">Ventajas de nuestros servicios</h2>
+<p class="text-lg text-gray-600 max-w-3xl mx-auto">Descubre por qué las principales instituciones sanitarias confían en Joboss Care para la selección de su personal.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+<!-- Ventaja 1 -->
+<div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all group">
+<div class="w-20 h-20 flex items-center justify-center bg-blue-100 rounded-full mb-6 mx-auto group-hover:bg-primary group-hover:text-white transition-colors">
+<i class="ri-time-line ri-2x text-primary group-hover:text-white"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Ahorro de tiempo</h3>
+<p class="text-gray-700 text-center">Nos encargamos de todo el proceso de selección, desde la búsqueda inicial hasta la presentación de candidatos finalistas, permitiéndote centrarte en tu actividad principal.</p>
+<div class="w-16 h-1 bg-primary mx-auto mt-6"></div>
+</div>
+<!-- Ventaja 2 -->
+<div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all group">
+<div class="w-20 h-20 flex items-center justify-center bg-blue-100 rounded-full mb-6 mx-auto group-hover:bg-primary group-hover:text-white transition-colors">
+<i class="ri-user-star-line ri-2x text-primary group-hover:text-white"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Candidatos de calidad</h3>
+<p class="text-gray-700 text-center">Nuestro riguroso proceso de selección garantiza que solo los profesionales más cualificados y comprometidos lleguen a tu institución, reduciendo la rotación de personal.</p>
+<div class="w-16 h-1 bg-primary mx-auto mt-6"></div>
+</div>
+<!-- Ventaja 3 -->
+<div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all group">
+<div class="w-20 h-20 flex items-center justify-center bg-blue-100 rounded-full mb-6 mx-auto group-hover:bg-primary group-hover:text-white transition-colors">
+<i class="ri-customer-service-2-line ri-2x text-primary group-hover:text-white"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Atención personalizada</h3>
+<p class="text-gray-700 text-center">Entendemos las necesidades específicas de cada institución sanitaria y adaptamos nuestros servicios para encontrar a los profesionales que mejor se ajusten a tu cultura organizacional.</p>
+<div class="w-16 h-1 bg-primary mx-auto mt-6"></div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10">
+<!-- Ventaja 4 -->
+<div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all group">
+<div class="w-20 h-20 flex items-center justify-center bg-blue-100 rounded-full mb-6 mx-auto group-hover:bg-primary group-hover:text-white transition-colors">
+<i class="ri-database-2-line ri-2x text-primary group-hover:text-white"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Amplia base de datos</h3>
+<p class="text-gray-700 text-center">Contamos con una extensa red de profesionales sanitarios cualificados, lo que nos permite encontrar rápidamente candidatos para cubrir tus necesidades, incluso en perfiles de difícil cobertura.</p>
+<div class="w-16 h-1 bg-primary mx-auto mt-6"></div>
+</div>
+<!-- Ventaja 5 -->
+<div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all group">
+<div class="w-20 h-20 flex items-center justify-center bg-blue-100 rounded-full mb-6 mx-auto group-hover:bg-primary group-hover:text-white transition-colors">
+<i class="ri-shield-check-line ri-2x text-primary group-hover:text-white"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Garantía de servicio</h3>
+<p class="text-gray-700 text-center">Ofrecemos un período de garantía para todos nuestros procesos de selección, asegurando la satisfacción tanto de la institución como del profesional contratado.</p>
+<div class="w-16 h-1 bg-primary mx-auto mt-6"></div>
+</div>
+</div>
+<div class="mt-16 text-center">
+<a href="#contacto" class="bg-primary text-white px-10 py-4 !rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition-colors inline-block shadow-lg hover:shadow-xl">Solicitar información</a>
+</div>
+</div>
+</section>
+<!-- Profesionales Section -->
+<section id="profesionales" class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-bold text-primary mb-4">Profesionales sanitarios</h2>
+<p class="text-lg text-gray-600 max-w-3xl mx-auto">Contamos con una amplia red de profesionales sanitarios cualificados para cubrir todas las necesidades de tu institución.</p>
+</div>
+<!-- Categorías de profesionales con pestañas -->
+<div class="mb-12">
+<div class="flex flex-wrap justify-center gap-4 mb-10">
+<button class="category-btn active px-6 py-3 !rounded-full whitespace-nowrap font-medium bg-primary text-white hover:bg-opacity-90 transition-colors" data-category="enfermeria">Enfermería</button>
+<button class="category-btn px-6 py-3 !rounded-full whitespace-nowrap font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors" data-category="auxiliares">Auxiliares y Técnicos</button>
+<button class="category-btn px-6 py-3 !rounded-full whitespace-nowrap font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors" data-category="medicos">Médicos</button>
+<button class="category-btn px-6 py-3 !rounded-full whitespace-nowrap font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors" data-category="terapeutas">Terapeutas</button>
+<button class="category-btn px-6 py-3 !rounded-full whitespace-nowrap font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors" data-category="cuidadores">Cuidadores</button>
+<button class="category-btn px-6 py-3 !rounded-full whitespace-nowrap font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors" data-category="otros">Otros profesionales</button>
+</div>
+<!-- Contenido de categorías -->
+<div class="category-content active" id="enfermeria-content">
+<div class="bg-gradient-to-r from-blue-50 to-white rounded-xl shadow-lg overflow-hidden">
+<div class="flex flex-col md:flex-row">
+<div class="md:w-1/2 p-8 md:p-12">
+<div class="flex items-center mb-6">
+<div class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full mr-4">
+<i class="ri-nurse-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-2xl font-bold text-gray-800">Enfermería</h3>
+</div>
+<p class="text-gray-700 mb-6">Nuestros profesionales de enfermería están altamente cualificados y cuentan con experiencia en diferentes áreas de especialización, desde atención primaria hasta cuidados intensivos.</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-heart-pulse-line text-primary"></i>
+</div>
+<span class="text-gray-700">Enfermeros/as generalistas</span>
+</div>
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-empathize-line text-primary"></i>
+</div>
+<span class="text-gray-700">Especialistas en pediatría</span>
+</div>
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-user-heart-line text-primary"></i>
+</div>
+<span class="text-gray-700">Especialistas en geriatría</span>
+</div>
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-psychotherapy-line text-primary"></i>
+</div>
+<span class="text-gray-700">Enfermeros/as de salud mental</span>
+</div>
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-surgical-mask-line text-primary"></i>
+</div>
+<span class="text-gray-700">Enfermeros/as de quirófano</span>
+</div>
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-heart-add-line text-primary"></i>
+</div>
+<span class="text-gray-700">Enfermeros/as de UCI</span>
+</div>
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-parent-line text-primary"></i>
+</div>
+<span class="text-gray-700">Matronas</span>
+</div>
+</div>
+</div>
+<div class="md:w-1/2 relative">
+<img src="https://public.readdy.ai/ai/img_res/5a4a81eb0a5cfcaca2c426a3465900a6.jpg" alt="Profesionales de enfermería" class="w-full h-full object-cover object-center">
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary via-secondary bg-opacity-90 to-transparent p-6">
+<p class="text-white font-medium text-lg">Profesionales comprometidos con la excelencia en el cuidado</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="category-content hidden" id="auxiliares-content">
+<div class="bg-gradient-to-r from-blue-50 to-white rounded-xl shadow-lg overflow-hidden">
+<div class="flex flex-col md:flex-row">
+<div class="md:w-1/2 p-8 md:p-12">
+<div class="flex items-center mb-6">
+<div class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full mr-4">
+<i class="ri-health-book-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-2xl font-bold text-gray-800">Auxiliares y Técnicos</h3>
+</div>
+<p class="text-gray-700 mb-6">Nuestros auxiliares y técnicos sanitarios cuentan con la formación y experiencia necesarias para brindar apoyo esencial en diferentes áreas de la atención sanitaria.</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-nurse-fill text-primary"></i>
+</div>
+<span class="text-gray-700">Auxiliares de enfermería</span>
+</div>
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-service-line text-primary"></i>
+</div>
+<span class="text-gray-700">Técnicos en cuidados auxiliares</span>
+</div>
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-ambulance-line text-primary"></i>
+</div>
+<span class="text-gray-700">Técnicos en emergencias</span>
+</div>
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-medicine-bottle-line text-primary"></i>
+</div>
+<span class="text-gray-700">Técnicos en farmacia</span>
+</div>
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-test-tube-line text-primary"></i>
+</div>
+<span class="text-gray-700">Técnicos en laboratorio</span>
+</div>
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-scan-line text-primary"></i>
+</div>
+<span class="text-gray-700">Técnicos en radiodiagnóstico</span>
+</div>
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-user-heart-line text-primary"></i>
+</div>
+<span class="text-gray-700">Auxiliares de geriatría</span>
+</div>
+</div>
+</div>
+<div class="md:w-1/2 relative">
+<img src="https://public.readdy.ai/ai/img_res/4fdf60631243bf9a99a201e46b270d20.jpg" alt="Auxiliares y técnicos sanitarios" class="w-full h-full object-cover object-center">
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary via-secondary bg-opacity-90 to-transparent p-6">
+<p class="text-white font-medium text-lg">Profesionales técnicos con alta cualificación</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="category-content hidden" id="medicos-content">
+<div class="bg-gradient-to-r from-blue-50 to-white rounded-xl shadow-lg overflow-hidden">
+<div class="flex flex-col md:flex-row">
+<div class="md:w-1/2 p-8 md:p-12">
+<div class="flex items-center mb-6">
+<div class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full mr-4">
+<i class="ri-stethoscope-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-2xl font-bold text-gray-800">Médicos</h3>
+</div>
+<p class="text-gray-700 mb-6">Contamos con médicos de diversas especialidades, con amplia experiencia clínica y compromiso con la excelencia en la atención al paciente.</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-home-heart-line text-primary"></i>
+</div>
+<span class="text-gray-700">Médicos de familia</span>
+</div>
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-empathize-line text-primary"></i>
+</div>
+<span class="text-gray-700">Pediatras</span>
+</div>
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-user-heart-line text-primary"></i>
+</div>
+<span class="text-gray-700">Geriatras</span>
+</div>
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-mental-health-line text-primary"></i>
+</div>
+<span class="text-gray-700">Psiquiatras</span>
+</div>
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-zzz-line text-primary"></i>
+</div>
+<span class="text-gray-700">Anestesistas</span>
+</div>
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-surgical-mask-line text-primary"></i>
+</div>
+<span class="text-gray-700">Cirujanos</span>
+</div>
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-hospital-line text-primary"></i>
+</div>
+<span class="text-gray-700">Médicos especialistas</span>
+</div>
+</div>
+</div>
+<div class="md:w-1/2 relative">
+<img src="https://public.readdy.ai/ai/img_res/38a011bd651005994bba50c1cb432a2d.jpg" alt="Médicos especialistas" class="w-full h-full object-cover object-center">
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary via-secondary bg-opacity-90 to-transparent p-6">
+<p class="text-white font-medium text-lg">Médicos comprometidos con la salud y el bienestar</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="category-content hidden" id="terapeutas-content">
+<div class="bg-gradient-to-r from-blue-50 to-white rounded-xl shadow-lg overflow-hidden">
+<div class="flex flex-col md:flex-row">
+<div class="md:w-1/2 p-8 md:p-12">
+<div class="flex items-center mb-6">
+<div class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full mr-4">
+<i class="ri-mental-health-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-2xl font-bold text-gray-800">Terapeutas</h3>
+</div>
+<p class="text-gray-700 mb-6">Nuestros terapeutas están especializados en diferentes áreas de rehabilitación y tratamiento, ofreciendo atención personalizada para mejorar la calidad de vida de los pacientes.</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-hand-heart-line text-primary"></i>
+</div>
+<span class="text-gray-700">Fisioterapeutas</span>
+</div>
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-wheelchair-line text-primary"></i>
+</div>
+<span class="text-gray-700">Terapeutas ocupacionales</span>
+</div>
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-chat-voice-line text-primary"></i>
+</div>
+<span class="text-gray-700">Logopedas</span>
+</div>
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-psychotherapy-line text-primary"></i>
+</div>
+<span class="text-gray-700">Psicólogos clínicos</span>
+</div>
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-restaurant-line text-primary"></i>
+</div>
+<span class="text-gray-700">Nutricionistas</span>
+</div>
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-footprint-line text-primary"></i>
+</div>
+<span class="text-gray-700">Podólogos</span>
+</div>
+</div>
+</div>
+<div class="md:w-1/2 relative">
+<img src="https://public.readdy.ai/ai/img_res/f43b7c60bd3ad599c38e95f11987108c.jpg" alt="Terapeutas profesionales" class="w-full h-full object-cover object-center">
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary via-secondary bg-opacity-90 to-transparent p-6">
+<p class="text-white font-medium text-lg">Especialistas en rehabilitación y bienestar</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="category-content hidden" id="cuidadores-content">
+<div class="bg-gradient-to-r from-blue-50 to-white rounded-xl shadow-lg overflow-hidden">
+<div class="flex flex-col md:flex-row">
+<div class="md:w-1/2 p-8 md:p-12">
+<div class="flex items-center mb-6">
+<div class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full mr-4">
+<i class="ri-hand-heart-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-2xl font-bold text-gray-800">Cuidadores</h3>
+</div>
+<p class="text-gray-700 mb-6">Nuestros cuidadores están formados para proporcionar atención personalizada y de calidad, con empatía y respeto hacia las personas que requieren asistencia.</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-user-heart-line text-primary"></i>
+</div>
+<span class="text-gray-700">Cuidadores de personas mayores</span>
+</div>
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-wheelchair-line text-primary"></i>
+</div>
+<span class="text-gray-700">Cuidadores de personas dependientes</span>
+</div>
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-home-heart-line text-primary"></i>
+</div>
+<span class="text-gray-700">Cuidadores a domicilio</span>
+</div>
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-user-follow-line text-primary"></i>
+</div>
+<span class="text-gray-700">Asistentes personales</span>
+</div>
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-service-line text-primary"></i>
+</div>
+<span class="text-gray-700">Gerocultores</span>
+</div>
+</div>
+</div>
+<div class="md:w-1/2 relative">
+<img src="https://public.readdy.ai/ai/img_res/6bd26483067d43315b8394b832fd0956.jpg" alt="Cuidadores profesionales" class="w-full h-full object-cover object-center">
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary via-secondary bg-opacity-90 to-transparent p-6">
+<p class="text-white font-medium text-lg">Cuidado con calidez humana y profesionalidad</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="category-content hidden" id="otros-content">
+<div class="bg-gradient-to-r from-blue-50 to-white rounded-xl shadow-lg overflow-hidden">
+<div class="flex flex-col md:flex-row">
+<div class="md:w-1/2 p-8 md:p-12">
+<div class="flex items-center mb-6">
+<div class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full mr-4">
+<i class="ri-service-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-2xl font-bold text-gray-800">Otros profesionales</h3>
+</div>
+<p class="text-gray-700 mb-6">Disponemos de una amplia variedad de profesionales sanitarios especializados en diferentes áreas para cubrir todas las necesidades de tu institución.</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-medicine-bottle-line text-primary"></i>
+</div>
+<span class="text-gray-700">Farmacéuticos</span>
+</div>
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-eye-line text-primary"></i>
+</div>
+<span class="text-gray-700">Ópticos-optometristas</span>
+</div>
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-brush-line text-primary"></i>
+</div>
+<span class="text-gray-700">Higienistas dentales</span>
+</div>
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-surgical-mask-line text-primary"></i>
+</div>
+<span class="text-gray-700">Odontólogos</span>
+</div>
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-team-line text-primary"></i>
+</div>
+<span class="text-gray-700">Trabajadores sociales sanitarios</span>
+</div>
+<div class="flex items-center bg-white p-3 rounded-lg shadow-sm">
+<div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3 shrink-0">
+<i class="ri-government-line text-primary"></i>
+</div>
+<span class="text-gray-700">Coordinadores asistenciales</span>
+</div>
+</div>
+</div>
+<div class="md:w-1/2 relative">
+<img src="https://public.readdy.ai/ai/img_res/29cc5697afa2305c2b6247a656338792.jpg" alt="Otros profesionales sanitarios" class="w-full h-full object-cover object-center">
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary via-secondary bg-opacity-90 to-transparent p-6">
+<p class="text-white font-medium text-lg">Especialistas en diversas áreas sanitarias</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- CTA final sin testimonios -->
+<!-- CTA final -->
+<div class="bg-gradient-to-r from-primary to-secondary rounded-xl shadow-lg p-8 md:p-12 text-white text-center">
+<h3 class="text-2xl md:text-3xl font-bold mb-4">¿No encuentras el perfil que necesitas?</h3>
+<p class="text-lg mb-8 max-w-3xl mx-auto">Contacta con nosotros y te ayudaremos a encontrar al profesional sanitario adecuado para tu institución. Nuestro equipo está a tu disposición para ofrecerte soluciones personalizadas.</p>
+<a href="#contacto" class="bg-white text-primary px-8 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition-colors inline-block">Contactar ahora</a>
+</div>
+</div>
+</section>
+<script>
+// Código para las pestañas de categorías de profesionales
+document.addEventListener('DOMContentLoaded', function() {
+const categoryButtons = document.querySelectorAll('.category-btn');
+const categoryContents = document.querySelectorAll('.category-content');
+categoryButtons.forEach(button => {
+button.addEventListener('click', function() {
+// Desactivar todos los botones y contenidos
+categoryButtons.forEach(btn => btn.classList.remove('active', 'bg-primary', 'text-white'));
+categoryButtons.forEach(btn => btn.classList.add('bg-gray-100', 'text-gray-700'));
+categoryContents.forEach(content => content.classList.add('hidden'));
+categoryContents.forEach(content => content.classList.remove('active'));
+// Activar el botón y contenido seleccionado
+this.classList.add('active', 'bg-primary', 'text-white');
+this.classList.remove('bg-gray-100', 'text-gray-700');
+const category = this.getAttribute('data-category');
+const targetContent = document.getElementById(`${category}-content`);
+targetContent.classList.remove('hidden');
+targetContent.classList.add('active');
+});
+});
+});
+</script>
+<!-- Work With Us Section -->
+<section id="trabaja" class="py-20 bg-gradient-to-b from-blue-50 to-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<span class="inline-block px-4 py-1 bg-blue-100 text-primary rounded-full text-sm font-medium mb-4">OPORTUNIDADES PROFESIONALES</span>
+<h2 class="text-4xl font-bold text-primary mb-6">Trabaja con nosotros</h2>
+<p class="text-lg text-gray-600 max-w-3xl mx-auto">Si eres un profesional sanitario en busca de nuevas oportunidades, estamos aquí para ayudarte a encontrar el puesto que mejor se adapte a tus habilidades, experiencia y aspiraciones.</p>
+</div>
+<div class="flex flex-col md:flex-row items-stretch gap-12">
+<div class="md:w-1/2 bg-white p-10 rounded-xl shadow-lg">
+<h3 class="text-2xl font-bold text-primary mb-6">Perfiles que buscamos</h3>
+<p class="text-gray-700 mb-8">Actualmente estamos seleccionando profesionales sanitarios para importantes centros e instituciones sanitarias en toda España.</p>
+<div class="mb-8">
+<ul class="space-y-4">
+<li class="flex items-center p-3 bg-blue-50 rounded-lg">
+<div class="w-10 h-10 flex items-center justify-center bg-gradient-to-r from-primary to-secondary rounded-full mr-4 text-white">
+<i class="ri-nurse-line ri-lg"></i>
+</div>
+<span class="text-gray-700 font-medium">Enfermeros/as (generalistas y especialistas)</span>
+</li>
+<li class="flex items-center p-3 bg-blue-50 rounded-lg">
+<div class="w-10 h-10 flex items-center justify-center bg-gradient-to-r from-primary to-secondary rounded-full mr-4 text-white">
+<i class="ri-health-book-line ri-lg"></i>
+</div>
+<span class="text-gray-700 font-medium">Auxiliares de enfermería</span>
+</li>
+<li class="flex items-center p-3 bg-blue-50 rounded-lg">
+<div class="w-10 h-10 flex items-center justify-center bg-gradient-to-r from-primary to-secondary rounded-full mr-4 text-white">
+<i class="ri-user-heart-line ri-lg"></i>
+</div>
+<span class="text-gray-700 font-medium">Cuidadores/as</span>
+</li>
+<li class="flex items-center p-3 bg-blue-50 rounded-lg">
+<div class="w-10 h-10 flex items-center justify-center bg-gradient-to-r from-primary to-secondary rounded-full mr-4 text-white">
+<i class="ri-hand-heart-line ri-lg"></i>
+</div>
+<span class="text-gray-700 font-medium">Fisioterapeutas</span>
+</li>
+<li class="flex items-center p-3 bg-blue-50 rounded-lg">
+<div class="w-10 h-10 flex items-center justify-center bg-gradient-to-r from-primary to-secondary rounded-full mr-4 text-white">
+<i class="ri-stethoscope-line ri-lg"></i>
+</div>
+<span class="text-gray-700 font-medium">Médicos de diferentes especialidades</span>
+</li>
+</ul>
+</div>
+<div class="bg-gradient-to-r from-primary to-secondary p-6 rounded-lg text-white shadow-md">
+<h4 class="font-bold text-xl mb-3">¿Qué ofrecemos?</h4>
+<ul class="space-y-2">
+<li class="flex items-center">
+<i class="ri-check-line mr-2"></i>
+<span>Proceso de selección transparente</span>
+</li>
+<li class="flex items-center">
+<i class="ri-check-line mr-2"></i>
+<span>Asesoramiento personalizado</span>
+</li>
+<li class="flex items-center">
+<i class="ri-check-line mr-2"></i>
+<span>Seguimiento continuo</span>
+</li>
+<li class="flex items-center">
+<i class="ri-check-line mr-2"></i>
+<span>Oportunidades en centros de prestigio</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="md:w-1/2">
+<div class="bg-white p-10 rounded-xl shadow-lg h-full">
+<div class="flex items-center mb-6">
+<div class="w-12 h-12 flex items-center justify-center bg-gradient-to-r from-primary to-secondary rounded-full mr-4 text-white">
+<i class="ri-file-upload-line ri-lg"></i>
+</div>
+<h3 class="text-2xl font-bold text-primary">Envía tu CV</h3>
+</div>
+<form class="space-y-6" id="cv-form" action="mailto:hola@joboss.es" method="post" enctype="multipart/form-data">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label for="nombre" class="block text-gray-700 mb-2 font-medium">Nombre</label>
+<input type="text" id="nombre" name="nombre" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary focus:ring-opacity-30 transition-all" placeholder="Tu nombre" required>
+</div>
+<div>
+<label for="apellidos" class="block text-gray-700 mb-2 font-medium">Apellidos</label>
+<input type="text" id="apellidos" name="apellidos" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary focus:ring-opacity-30 transition-all" placeholder="Tus apellidos" required>
+</div>
+</div>
+<div>
+<label for="email" class="block text-gray-700 mb-2 font-medium">Email</label>
+<input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary focus:ring-opacity-30 transition-all" placeholder="tu@email.com" required>
+</div>
+<div>
+<label for="telefono" class="block text-gray-700 mb-2 font-medium">Teléfono</label>
+<input type="tel" id="telefono" name="telefono" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary focus:ring-opacity-30 transition-all" placeholder="+34 600 000 000" required>
+</div>
+<div>
+<label for="perfil" class="block text-gray-700 mb-2 font-medium">Perfil profesional</label>
+<div class="relative">
+<select id="perfil" name="perfil" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary focus:ring-opacity-30 transition-all appearance-none pr-10" required>
+<option value="">Selecciona tu perfil</option>
+<option value="enfermeria">Enfermería</option>
+<option value="auxiliar">Auxiliar de enfermería</option>
+<option value="cuidador">Cuidador/a</option>
+<option value="fisio">Fisioterapeuta</option>
+<option value="medico">Médico</option>
+<option value="otro">Otro</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+<i class="ri-arrow-down-s-line text-gray-400"></i>
+</div>
+</div>
+</div>
+<div>
+<label for="cv" class="block text-gray-700 mb-2 font-medium">Adjunta tu CV</label>
+<div class="flex items-center justify-center w-full">
+<label for="cv" class="flex flex-col items-center justify-center w-full h-36 border-2 border-primary border-dashed rounded-lg cursor-pointer bg-blue-50 hover:bg-blue-100 transition-colors">
+<div class="flex flex-col items-center justify-center pt-5 pb-6">
+<i class="ri-upload-cloud-line ri-2x text-primary mb-3"></i>
+<p class="mb-2 text-sm text-gray-700"><span class="font-semibold">Haz clic para subir</span> o arrastra y suelta</p>
+<p class="text-xs text-gray-500">PDF, DOC o DOCX (Máx. 2MB)</p>
+</div>
+<input id="cv" name="cv" type="file" class="hidden" required />
+</label>
+</div>
+</div>
+<div class="flex items-start">
+<input type="checkbox" id="privacidad" name="privacidad" class="custom-checkbox mr-3 mt-1" required>
+<label for="privacidad" class="text-sm text-gray-600">Acepto la <a href="#privacidad" id="privacidad-link-cv" class="text-primary hover:underline">política de privacidad</a> y el tratamiento de mis datos personales.</label>
+</div>
+<button type="submit" class="bg-primary text-white px-6 py-4 !rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition-colors w-full shadow-lg hover:shadow-xl">Enviar solicitud</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section id="contacto" class="py-20 bg-gradient-to-b from-white to-blue-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<span class="inline-block px-4 py-1 bg-blue-100 text-primary rounded-full text-sm font-medium mb-4">ESTAMOS PARA AYUDARTE</span>
+<h2 class="text-4xl font-bold text-primary mb-6">Contacto</h2>
+<p class="text-lg text-gray-600 max-w-3xl mx-auto">Estamos aquí para responder a todas tus dudas. Contacta con nosotros y te responderemos a la mayor brevedad.</p>
+</div>
+<div class="max-w-5xl mx-auto">
+<div class="flex flex-col md:flex-row gap-10">
+<div class="md:w-2/5">
+<div class="bg-white p-8 rounded-xl shadow-lg h-full">
+<div class="flex items-center mb-8">
+<div class="w-12 h-12 flex items-center justify-center bg-gradient-to-r from-primary to-secondary rounded-full mr-4 text-white">
+<i class="ri-map-pin-line ri-lg"></i>
+</div>
+<h3 class="text-2xl font-bold text-primary">Información de contacto</h3>
+</div>
+<div class="space-y-6">
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center bg-blue-100 rounded-full mr-4 shrink-0">
+<i class="ri-mail-line text-primary"></i>
+</div>
+<div>
+<h4 class="font-bold text-gray-800 mb-1">Email</h4>
+<p class="text-gray-600">hola@joboss.es</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center bg-blue-100 rounded-full mr-4 shrink-0">
+<i class="ri-phone-line text-primary"></i>
+</div>
+<div>
+<h4 class="font-bold text-gray-800 mb-1">Teléfono</h4>
+<p class="text-gray-600">+34 600 123 456</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center bg-blue-100 rounded-full mr-4 shrink-0">
+<i class="ri-time-line text-primary"></i>
+</div>
+<div>
+<h4 class="font-bold text-gray-800 mb-1">Horario de atención</h4>
+<p class="text-gray-600">Lunes a Viernes: 9:00 - 18:00</p>
+</div>
+</div>
+</div>
+<div class="mt-10">
+<h4 class="font-bold text-gray-800 mb-4">Síguenos en redes sociales</h4>
+<div class="flex space-x-4">
+<a href="#" class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full text-primary hover:bg-primary hover:text-white transition-colors">
+<i class="ri-linkedin-fill ri-lg"></i>
+</a>
+<a href="#" class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full text-primary hover:bg-primary hover:text-white transition-colors">
+<i class="ri-twitter-x-fill ri-lg"></i>
+</a>
+<a href="#" class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full text-primary hover:bg-primary hover:text-white transition-colors">
+<i class="ri-facebook-fill ri-lg"></i>
+</a>
+<a href="#" class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full text-primary hover:bg-primary hover:text-white transition-colors">
+<i class="ri-instagram-fill ri-lg"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="md:w-3/5">
+<div class="bg-white p-8 rounded-xl shadow-lg">
+<div class="flex items-center mb-8">
+<div class="w-12 h-12 flex items-center justify-center bg-gradient-to-r from-primary to-secondary rounded-full mr-4 text-white">
+<i class="ri-message-3-line ri-lg"></i>
+</div>
+<h3 class="text-2xl font-bold text-primary">Envíanos un mensaje</h3>
+</div>
+<form class="space-y-6" id="contacto-form" action="mailto:hola@joboss.es" method="post" enctype="text/plain">
+<div class="mb-6">
+<label for="nombre-contacto" class="block text-gray-700 mb-2 font-medium">Nombre completo</label>
+<input type="text" id="nombre-contacto" name="nombre" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary focus:ring-opacity-30 transition-all" placeholder="Tu nombre y apellidos" required>
+</div>
+<div class="mb-6">
+<label for="email-contacto" class="block text-gray-700 mb-2 font-medium">Email</label>
+<input type="email" id="email-contacto" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary focus:ring-opacity-30 transition-all" placeholder="tu@email.com" required>
+</div>
+<div class="mb-6">
+<label for="asunto" class="block text-gray-700 mb-2 font-medium">Asunto</label>
+<input type="text" id="asunto" name="asunto" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary focus:ring-opacity-30 transition-all" placeholder="Asunto de tu mensaje" required>
+</div>
+<div class="mb-6">
+<label for="mensaje" class="block text-gray-700 mb-2 font-medium">Mensaje</label>
+<textarea id="mensaje" name="mensaje" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary focus:ring-opacity-30 transition-all" placeholder="Escribe tu mensaje aquí..." required></textarea>
+</div>
+<div class="flex items-start mb-6">
+<input type="checkbox" id="privacidad-contacto" name="privacidad" class="custom-checkbox mr-3 mt-1" required>
+<label for="privacidad-contacto" class="text-sm text-gray-600">Acepto la <a href="#privacidad" id="privacidad-link-form" class="text-primary hover:underline">política de privacidad</a> y el tratamiento de mis datos personales.</label>
+</div>
+<button type="submit" class="bg-primary text-white px-6 py-4 !rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition-colors w-full shadow-lg hover:shadow-xl">Enviar mensaje</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter Section -->
+<section class="py-16 bg-gradient-to-r from-primary to-secondary">
+<div class="container mx-auto px-4">
+<div class="max-w-3xl mx-auto text-center">
+<h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Suscríbete a nuestra newsletter</h2>
+<p class="text-white text-opacity-90 mb-8">Recibe las últimas novedades sobre el sector sanitario y ofertas de empleo.</p>
+<form class="flex flex-col sm:flex-row gap-4" action="mailto:hola@joboss.es" method="post" enctype="text/plain">
+<input type="email" name="email" placeholder="Tu email" class="flex-grow px-4 py-3 rounded-md border-none focus:outline-none text-gray-700" required>
+<button type="submit" class="bg-white text-primary px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition-colors">Suscribirme</button>
+</form>
+<p class="text-white text-opacity-70 text-sm mt-4">Al suscribirte, aceptas nuestra <a href="#privacidad" id="privacidad-link-newsletter" class="underline">política de privacidad</a>.</p>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-gradient-to-r from-primary to-secondary text-white py-12">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div>
+<h3 class="text-xl font-audiowide text-white mb-6">Joboss Care</h3>
+<p class="text-gray-400 mb-6">Expertos en selección de personal sanitario. Conectamos talento con oportunidades.</p>
+<div class="flex space-x-4">
+<a href="#" class="text-white text-opacity-70 hover:text-white transition-colors">
+<i class="ri-linkedin-fill ri-lg"></i>
+</a>
+<a href="#" class="text-white text-opacity-70 hover:text-white transition-colors">
+<i class="ri-twitter-x-fill ri-lg"></i>
+</a>
+<a href="#" class="text-white text-opacity-70 hover:text-white transition-colors">
+<i class="ri-facebook-fill ri-lg"></i>
+</a>
+<a href="#" class="text-white text-opacity-70 hover:text-white transition-colors">
+<i class="ri-instagram-fill ri-lg"></i>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-6">Enlaces rápidos</h4>
+<ul class="space-y-3">
+<li><a href="#inicio" class="text-white text-opacity-70 hover:text-white transition-colors">Inicio</a></li>
+<li><a href="#servicios" class="text-white text-opacity-70 hover:text-white transition-colors">Servicios</a></li>
+<li><a href="#nosotros" class="text-white text-opacity-70 hover:text-white transition-colors">Quiénes Somos</a></li>
+<li><a href="#ventajas" class="text-white text-opacity-70 hover:text-white transition-colors">Ventajas</a></li>
+<li><a href="#profesionales" class="text-white text-opacity-70 hover:text-white transition-colors">Profesionales</a></li>
+<li><a href="#trabaja" class="text-white text-opacity-70 hover:text-white transition-colors">Trabaja con nosotros</a></li>
+<li><a href="#contacto" class="text-white text-opacity-70 hover:text-white transition-colors">Contacto</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-6">Servicios</h4>
+<ul class="space-y-3">
+<li><a href="#" class="text-white text-opacity-70 hover:text-white transition-colors">Reclutamiento</a></li>
+<li><a href="#" class="text-white text-opacity-70 hover:text-white transition-colors">Selección de Personal</a></li>
+<li><a href="#" class="text-white text-opacity-70 hover:text-white transition-colors">Asesoría en RRHH</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-white border-opacity-20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+<p class="text-white text-opacity-70 text-sm mb-4 md:mb-0">© 2025 Joboss Care. Todos los derechos reservados.</p>
+<div class="flex flex-wrap justify-center gap-4">
+<a href="#privacidad" id="privacidad-link" class="text-white text-opacity-70 hover:text-white transition-colors text-sm">Política de privacidad</a>
+<a href="#terminos" id="terminos-link" class="text-white text-opacity-70 hover:text-white transition-colors text-sm">Términos y condiciones</a>
+<a href="#cookies" id="cookies-link" class="text-white text-opacity-70 hover:text-white transition-colors text-sm">Política de cookies</a>
+<a href="#aviso" id="aviso-link" class="text-white text-opacity-70 hover:text-white transition-colors text-sm">Aviso legal</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+// Mobile menu toggle
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+const mobileMenu = document.getElementById('mobile-menu');
+mobileMenuButton.addEventListener('click', () => {
+mobileMenu.classList.toggle('hidden');
+if (mobileMenu.classList.contains('hidden')) {
+mobileMenuButton.innerHTML = '<i class="ri-menu-line ri-2x"></i>';
+} else {
+mobileMenuButton.innerHTML = '<i class="ri-close-line ri-2x"></i>';
+}
+});
+// Close mobile menu when clicking on a link
+const mobileLinks = mobileMenu.querySelectorAll('a');
+mobileLinks.forEach(link => {
+link.addEventListener('click', () => {
+mobileMenu.classList.add('hidden');
+mobileMenuButton.innerHTML = '<i class="ri-menu-line ri-2x"></i>';
+});
+});
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function(e) {
+e.preventDefault();
+const targetId = this.getAttribute('href');
+const targetElement = document.querySelector(targetId);
+if (targetElement) {
+window.scrollTo({
+top: targetElement.offsetTop - 80,
+behavior: 'smooth'
+});
+}
+});
+});
+// Form submission handling for CV form
+document.getElementById('cv-form').addEventListener('submit', function(e) {
+e.preventDefault();
+const formData = new FormData(this);
+const subject = 'Nuevo CV recibido';
+let body = '';
+for (let [key, value] of formData.entries()) {
+if (key !== 'cv') {
+body += `${key}: ${value}\n`;
+}
+}
+body += '\nSe ha adjuntado un CV.';
+window.location.href = `mailto:hola@joboss.es?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+});
+// Form submission handling for contact form
+document.getElementById('contacto-form').addEventListener('submit', function(e) {
+e.preventDefault();
+const formData = new FormData(this);
+const subject = encodeURIComponent(formData.get('asunto'));
+let body = '';
+for (let [key, value] of formData.entries()) {
+if (key !== 'asunto') {
+body += `${key}: ${value}\n`;
+}
+}
+window.location.href = `mailto:hola@joboss.es?subject=${subject}&body=${encodeURIComponent(body)}`;
+});
+// Add event listeners for privacy policy links in forms
+document.getElementById('privacidad-link-form').addEventListener('click', function(e) {
+e.preventDefault();
+document.getElementById('privacidad-link').click();
+});
+document.getElementById('privacidad-link-cv').addEventListener('click', function(e) {
+e.preventDefault();
+document.getElementById('privacidad-link').click();
+});
+document.getElementById('privacidad-link-newsletter').addEventListener('click', function(e) {
+e.preventDefault();
+document.getElementById('privacidad-link').click();
+});
+// Modal functionality for legal pages
+function createModal(title, content) {
+const modal = document.createElement('div');
+modal.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4';
+const modalContent = document.createElement('div');
+modalContent.className = 'bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto';
+const modalHeader = document.createElement('div');
+modalHeader.className = 'flex justify-between items-center p-6 border-b';
+const modalTitle = document.createElement('h3');
+modalTitle.className = 'text-2xl font-bold text-primary';
+modalTitle.textContent = title;
+const closeButton = document.createElement('button');
+closeButton.className = 'text-gray-500 hover:text-gray-700';
+closeButton.innerHTML = '<i class="ri-close-line ri-2x"></i>';
+closeButton.onclick = () => modal.remove();
+modalHeader.appendChild(modalTitle);
+modalHeader.appendChild(closeButton);
+const modalBody = document.createElement('div');
+modalBody.className = 'p-6 text-gray-700';
+modalBody.innerHTML = content;
+modalContent.appendChild(modalHeader);
+modalContent.appendChild(modalBody);
+modal.appendChild(modalContent);
+document.body.appendChild(modal);
+// Close modal when clicking outside
+modal.addEventListener('click', (e) => {
+if (e.target === modal) {
+modal.remove();
+}
+});
+// Prevent scrolling on body
+document.body.style.overflow = 'hidden';
+modal.addEventListener('click', (e) => {
+if (e.target === modal) {
+document.body.style.overflow = '';
+modal.remove();
+}
+});
+closeButton.addEventListener('click', () => {
+document.body.style.overflow = '';
+});
+}
+// Privacy Policy
+document.getElementById('privacidad-link').addEventListener('click', function(e) {
+e.preventDefault();
+createModal('Política de Privacidad', `
+<div class="space-y-6">
+<h4 class="text-xl font-bold text-gray-800">1. Responsable del tratamiento</h4>
+<p>Marco Aomar Prieto Olivenza (en adelante, "Joboss Care")<br>
+CIF: 04225783Q<br>
+Web: www.joboss.es<br>
+Email: hola@joboss.es</p>
+<h4 class="text-xl font-bold text-gray-800">2. Finalidad del tratamiento</h4>
+<p>En Joboss Care tratamos los datos personales que nos facilitas con las siguientes finalidades:</p>
+<ul class="list-disc pl-6 space-y-2">
+<li>Gestionar tu solicitud de información sobre nuestros servicios.</li>
+<li>Gestionar tu candidatura para trabajar con nosotros.</li>
+<li>Enviarte comunicaciones comerciales sobre nuestros servicios, siempre que hayas dado tu consentimiento.</li>
+<li>Gestionar tu suscripción a nuestra newsletter.</li>
+<li>Mejorar nuestros servicios y la experiencia de usuario en nuestra web.</li>
+</ul>
+<h4 class="text-xl font-bold text-gray-800">3. Legitimación</h4>
+<p>La base legal para el tratamiento de tus datos es:</p>
+<ul class="list-disc pl-6 space-y-2">
+<li>El consentimiento que nos otorgas al enviarnos tus datos a través de los formularios de nuestra web.</li>
+<li>El interés legítimo en el caso de la mejora de nuestros servicios y la experiencia de usuario.</li>
+<li>La ejecución de un contrato en el caso de que contrates nuestros servicios.</li>
+</ul>
+<h4 class="text-xl font-bold text-gray-800">4. Conservación de los datos</h4>
+<p>Conservaremos tus datos personales mientras se mantenga la relación contigo o mientras no ejerzas tu derecho de supresión, cancelación u oposición. Después, los mantendremos bloqueados durante los plazos de prescripción legal (generalmente 5 años).</p>
+<h4 class="text-xl font-bold text-gray-800">5. Destinatarios</h4>
+<p>Tus datos podrán ser comunicados a:</p>
+<ul class="list-disc pl-6 space-y-2">
+<li>Empresas del grupo Joboss Care para fines administrativos internos.</li>
+<li>Proveedores de servicios que nos ayudan a prestar nuestros servicios (como servicios de hosting, email marketing, etc.).</li>
+<li>Administraciones públicas cuando así lo exija la normativa aplicable.</li>
+</ul>
+<p>No realizamos transferencias internacionales de datos fuera del Espacio Económico Europeo (EEE).</p>
+<h4 class="text-xl font-bold text-gray-800">6. Derechos</h4>
+<p>Tienes derecho a:</p>
+<ul class="list-disc pl-6 space-y-2">
+<li>Acceder a tus datos personales.</li>
+<li>Rectificar los datos inexactos.</li>
+<li>Solicitar su supresión cuando ya no sean necesarios.</li>
+<li>Oponerte al tratamiento de tus datos.</li>
+<li>Solicitar la limitación del tratamiento de tus datos.</li>
+<li>Solicitar la portabilidad de tus datos.</li>
+<li>Retirar el consentimiento prestado.</li>
+</ul>
+<p>Puedes ejercer estos derechos enviando un email a hola@joboss.es, adjuntando copia de tu DNI o documento equivalente.</p>
+<p>También tienes derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (www.aepd.es).</p>
+<h4 class="text-xl font-bold text-gray-800">7. Medidas de seguridad</h4>
+<p>Hemos adoptado las medidas de seguridad técnicas y organizativas necesarias para garantizar la seguridad de tus datos y evitar su alteración, pérdida, tratamiento o acceso no autorizado.</p>
+<h4 class="text-xl font-bold text-gray-800">8. Actualización</h4>
+<p>Esta Política de Privacidad fue actualizada por última vez el 9 de abril de 2025. Podemos modificarla en cualquier momento, por lo que te recomendamos revisarla periódicamente.</p>
+</div>
+`);
+});
+// Terms and Conditions
+document.getElementById('terminos-link').addEventListener('click', function(e) {
+e.preventDefault();
+createModal('Términos y Condiciones', `
+<div class="space-y-6">
+<h4 class="text-xl font-bold text-gray-800">1. Introducción</h4>
+<p>Estos Términos y Condiciones regulan el uso del sitio web www.joboss.es (en adelante, el "Sitio Web") propiedad de Marco Aomar Prieto Olivenza (en adelante, "Joboss Care"), con CIF 04225783Q.</p>
+<p>El acceso y uso del Sitio Web implica la aceptación expresa y sin reservas de estos Términos y Condiciones. Si no estás de acuerdo con los mismos, te rogamos que no utilices nuestro Sitio Web.</p>
+<h4 class="text-xl font-bold text-gray-800">2. Objeto</h4>
+<p>El Sitio Web tiene como objeto proporcionar información sobre los servicios de selección de personal sanitario ofrecidos por Joboss Care, así como facilitar el contacto entre profesionales sanitarios y Joboss Care.</p>
+<h4 class="text-xl font-bold text-gray-800">3. Condiciones de uso</h4>
+<p>El usuario se compromete a utilizar el Sitio Web de conformidad con la ley, estos Términos y Condiciones, la moral y las buenas costumbres generalmente aceptadas y el orden público.</p>
+<p>El usuario se obliga a:</p>
+<ul class="list-disc pl-6 space-y-2">
+<li>No utilizar el Sitio Web con fines ilícitos o prohibidos.</li>
+<li>No dañar, inutilizar, sobrecargar o deteriorar el Sitio Web o impedir su normal utilización por parte de otros usuarios.</li>
+<li>No acceder o intentar acceder a recursos restringidos del Sitio Web.</li>
+<li>No introducir o difundir virus informáticos o cualquier otro sistema físico o lógico que pueda dañar el Sitio Web.</li>
+</ul>
+<h4 class="text-xl font-bold text-gray-800">4. Propiedad intelectual e industrial</h4>
+<p>Todos los contenidos del Sitio Web (incluyendo, sin limitación, textos, gráficos, imágenes, vídeos, sonidos, diseños, iconos, software, códigos fuente, marcas, logotipos, nombres comerciales, etc.) son propiedad de Joboss Care o de terceros que han autorizado su uso, y están protegidos por las leyes de propiedad intelectual e industrial.</p>
+<p>Queda prohibida la reproducción, distribución, comunicación pública, transformación o cualquier otra forma de explotación de los contenidos del Sitio Web sin la autorización expresa de Joboss Care.</p>
+<h4 class="text-xl font-bold text-gray-800">5. Enlaces</h4>
+<p>El Sitio Web puede incluir enlaces a sitios web de terceros. Joboss Care no asume ninguna responsabilidad por el contenido, información o servicios que pudieran aparecer en dichos sitios, que tendrán carácter meramente informativo y que en ningún caso implican relación alguna entre Joboss Care y las personas o entidades titulares de tales contenidos o titulares de los sitios donde se encuentren.</p>
+<h4 class="text-xl font-bold text-gray-800">6. Exclusión de garantías y responsabilidad</h4>
+<p>Joboss Care no garantiza la disponibilidad y continuidad del funcionamiento del Sitio Web. Cuando ello sea razonablemente posible, Joboss Care advertirá previamente de las interrupciones en el funcionamiento del Sitio Web.</p>
+<p>Joboss Care excluye cualquier responsabilidad por los daños y perjuicios de toda naturaleza que puedan deberse a la falta de disponibilidad o de continuidad del funcionamiento del Sitio Web, a la defraudación de la utilidad que los usuarios hubieren podido atribuir al Sitio Web, a la falibilidad del mismo, y en particular, aunque no de modo exclusivo, a los fallos en el acceso a las distintas páginas web del Sitio Web.</p>
+<h4 class="text-xl font-bold text-gray-800">7. Modificaciones</h4>
+<p>Joboss Care se reserva el derecho a modificar unilateralmente, en cualquier momento y sin previo aviso, estos Términos y Condiciones. Las modificaciones entrarán en vigor desde su publicación en el Sitio Web.</p>
+<h4 class="text-xl font-bold text-gray-800">8. Legislación aplicable y jurisdicción</h4>
+<p>Estos Términos y Condiciones se rigen por la legislación española. Para la resolución de cualquier controversia que pudiera surgir en relación con el acceso o uso del Sitio Web, Joboss Care y el usuario acuerdan someterse a los Juzgados y Tribunales de Madrid capital, con renuncia expresa a cualquier otro fuero que pudiera corresponderles.</p>
+<h4 class="text-xl font-bold text-gray-800">9. Contacto</h4>
+<p>Para cualquier duda, sugerencia o propuesta sobre estos Términos y Condiciones, puedes contactar con nosotros a través del email hola@joboss.es.</p>
+</div>
+`);
+});
+// Cookies Policy
+document.getElementById('cookies-link').addEventListener('click', function(e) {
+e.preventDefault();
+createModal('Política de Cookies', `
+<div class="space-y-6">
+<h4 class="text-xl font-bold text-gray-800">1. ¿Qué son las cookies?</h4>
+<p>Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo (ordenador, tablet, smartphone, etc.) cuando visitas un sitio web. Las cookies permiten al sitio web reconocer tu dispositivo y recordar información sobre tu visita (por ejemplo, tu idioma preferido, tamaño de fuente y otras preferencias).</p>
+<h4 class="text-xl font-bold text-gray-800">2. Tipos de cookies que utilizamos</h4>
+<p>En nuestro sitio web utilizamos los siguientes tipos de cookies:</p>
+<h5 class="text-lg font-semibold text-gray-800 mt-4">2.1. Cookies técnicas</h5>
+<p>Son aquellas que permiten al usuario la navegación a través del sitio web y la utilización de las diferentes opciones o servicios que en ella existen, como identificar la sesión, acceder a partes de acceso restringido, recordar los elementos que integran un pedido, realizar el proceso de compra de un pedido, etc.</p>
+<h5 class="text-lg font-semibold text-gray-800 mt-4">2.2. Cookies de análisis</h5>
+<p>Son aquellas que permiten el seguimiento y análisis del comportamiento de los usuarios del sitio web. La información recogida mediante este tipo de cookies se utiliza en la medición de la actividad del sitio web y para la elaboración de perfiles de navegación de los usuarios, con el fin de introducir mejoras en función del análisis de los datos de uso que hacen los usuarios del servicio.</p>
+<h5 class="text-lg font-semibold text-gray-800 mt-4">2.3. Cookies de personalización</h5>
+<p>Son aquellas que permiten al usuario acceder al servicio con algunas características de carácter general predefinidas en función de una serie de criterios en el terminal del usuario (por ejemplo, el idioma, el tipo de navegador, la configuración regional desde donde accede al servicio, etc.).</p>
+<h5 class="text-lg font-semibold text-gray-800 mt-4">2.4. Cookies publicitarias</h5>
+<p>Son aquellas que permiten la gestión, de la forma más eficaz posible, de los espacios publicitarios que, en su caso, el editor haya incluido en el sitio web en base a criterios como el contenido editado o la frecuencia en la que se muestran los anuncios.</p>
+<h4 class="text-xl font-bold text-gray-800">3. Cookies de terceros</h4>
+<p>Algunas de las cookies utilizadas en nuestro sitio web son cookies de terceros, es decir, cookies que son enviadas a tu dispositivo desde un dominio o sitio web que no es gestionado por nosotros sino por otra entidad que trata los datos obtenidos a través de las cookies. En concreto, utilizamos cookies de los siguientes terceros:</p>
+<ul class="list-disc pl-6 space-y-2">
+<li>Google Analytics: cookies de análisis para obtener estadísticas sobre el uso del sitio web.</li>
+<li>Google Ads: cookies publicitarias para mostrar anuncios relevantes.</li>
+<li>Facebook: cookies para integrar funcionalidades de redes sociales y mostrar anuncios relevantes.</li>
+<li>LinkedIn: cookies para integrar funcionalidades de redes sociales y mostrar anuncios relevantes.</li>
+</ul>
+<h4 class="text-xl font-bold text-gray-800">4. ¿Cómo puedes gestionar las cookies?</h4>
+<p>Puedes permitir, bloquear o eliminar las cookies instaladas en tu dispositivo a través de la configuración de las opciones de tu navegador de internet. A continuación, te indicamos los enlaces a las instrucciones para gestionar las cookies en los principales navegadores:</p>
+<ul class="list-disc pl-6 space-y-2">
+<li><a href="https://support.google.com/chrome/answer/95647?hl=es" class="text-primary hover:underline" target="_blank">Google Chrome</a></li>
+<li><a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias" class="text-primary hover:underline" target="_blank">Mozilla Firefox</a></li>
+<li><a href="https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" class="text-primary hover:underline" target="_blank">Microsoft Edge</a></li>
+<li><a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" class="text-primary hover:underline" target="_blank">Safari</a></li>
+</ul>
+<p>Ten en cuenta que si rechazas o bloqueas las cookies, es posible que algunas funcionalidades del sitio web no estén disponibles.</p>
+<h4 class="text-xl font-bold text-gray-800">5. Actualizaciones y cambios en la Política de Cookies</h4>
+<p>Podemos modificar esta Política de Cookies en función de nuevas exigencias legislativas, reglamentarias, o con la finalidad de adaptar dicha política a las instrucciones dictadas por la Agencia Española de Protección de Datos.</p>
+<p>Cuando se produzcan cambios significativos en esta Política de Cookies, se comunicará al usuario mediante un aviso en la página web.</p>
+<h4 class="text-xl font-bold text-gray-800">6. Contacto</h4>
+<p>Si tienes alguna pregunta sobre nuestra Política de Cookies, puedes contactar con nosotros a través del email hola@joboss.es.</p>
+</div>
+`);
+});
+// Legal Notice
+document.getElementById('aviso-link').addEventListener('click', function(e) {
+e.preventDefault();
+createModal('Aviso Legal', `
+<div class="space-y-6">
+<h4 class="text-xl font-bold text-gray-800">1. Información general</h4>
+<p>En cumplimiento de la obligación de información establecida en el artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico, se indican a continuación los datos identificativos del titular del sitio web www.joboss.es (en adelante, el "Sitio Web"):</p>
+<ul class="list-disc pl-6 space-y-2">
+<li>Titular: Marco Aomar Prieto Olivenza</li>
+<li>CIF: 04225783Q</li>
+<li>Web: www.joboss.es</li>
+<li>Email: hola@joboss.es</li>
+</ul>
+<h4 class="text-xl font-bold text-gray-800">2. Objeto</h4>
+<p>El presente Aviso Legal regula el acceso y uso del Sitio Web, que Joboss Care pone a disposición de los usuarios de Internet. El acceso al Sitio Web implica la aceptación sin reservas del presente Aviso Legal.</p>
+<h4 class="text-xl font-bold text-gray-800">3. Condiciones de acceso y utilización</h4>
+<p>El acceso al Sitio Web es gratuito, salvo en lo relativo al coste de la conexión a través de la red de telecomunicaciones suministrada por el proveedor de acceso contratado por el usuario.</p>
+<p>El usuario se compromete a utilizar el Sitio Web, los contenidos y servicios de conformidad con la Ley, el presente Aviso Legal, las buenas costumbres y el orden público. Del mismo modo, el usuario se obliga a no utilizar el Sitio Web o los servicios que se presten a través de él con fines o efectos ilícitos o contrarios al contenido del presente Aviso Legal, lesivos de los intereses o derechos de terceros, o que de cualquier forma puedan dañar, inutilizar, sobrecargar o deteriorar el Sitio Web o impedir la normal utilización del mismo por parte de otros usuarios.</p>
+<h4 class="text-xl font-bold text-gray-800">4. Propiedad intelectual e industrial</h4>
+<p>Todos los contenidos del Sitio Web, entendiendo por estos a título meramente enunciativo los textos, fotografías, gráficos, imágenes, iconos, tecnología, software, links y demás contenidos audiovisuales o sonoros, así como su diseño gráfico y códigos fuente, son propiedad intelectual de Joboss Care o de terceros, sin que puedan entenderse cedidos al usuario ninguno de los derechos de explotación reconocidos por la normativa vigente en materia de propiedad intelectual sobre los mismos.</p>
+<p>Las marcas, nombres comerciales o signos distintivos son titularidad de Joboss Care o terceros, sin que pueda entenderse que el acceso al Sitio Web atribuya ningún derecho sobre las citadas marcas, nombres comerciales y/o signos distintivos.</p>
+<h4 class="text-xl font-bold text-gray-800">5. Exclusión de garantías y responsabilidad</h4>
+<p>Joboss Care no garantiza la disponibilidad y continuidad del funcionamiento del Sitio Web. Cuando ello sea razonablemente posible, Joboss Care advertirá previamente de las interrupciones en el funcionamiento del Sitio Web.</p>
+<p>Joboss Care excluye cualquier responsabilidad por los daños y perjuicios de toda naturaleza que puedan deberse a la falta de disponibilidad o de continuidad del funcionamiento del Sitio Web, a la defraudación de la utilidad que los usuarios hubieren podido atribuir al Sitio Web, a la falibilidad del mismo, y en particular, aunque no de modo exclusivo, a los fallos en el acceso a las distintas páginas web del Sitio Web.</p>
+<h4 class="text-xl font-bold text-gray-800">6. Enlaces (links)</h4>
+<p>En el caso de que en el Sitio Web se dispusiesen enlaces o hipervínculos hacia otros sitios de Internet, Joboss Care no ejercerá ningún tipo de control sobre dichos sitios y contenidos. En ningún caso Joboss Care asumirá responsabilidad alguna por los contenidos de algún enlace perteneciente a un sitio web ajeno, ni garantizará la disponibilidad técnica, calidad, fiabilidad, exactitud, amplitud, veracidad, validez y constitucionalidad de cualquier material o información contenida en ninguno de dichos hipervínculos u otros sitios de Internet.</p>
+<h4 class="text-xl font-bold text-gray-800">7. Derecho de exclusión</h4>
+<p>Joboss Care se reserva el derecho a denegar o retirar el acceso al Sitio Web y/o los servicios ofrecidos sin necesidad de preaviso, a instancia propia o de un tercero, a aquellos usuarios que incumplan el presente Aviso Legal.</p>
+<h4 class="text-xl font-bold text-gray-800">8. Generalidades</h4>
+<p>Joboss Care perseguirá el incumplimiento del presente Aviso Legal así como cualquier utilización indebida del Sitio Web ejerciendo todas las acciones civiles y penales que le puedan corresponder en derecho.</p>
+<h4 class="text-xl font-bold text-gray-800">9. Legislación aplicable y jurisdicción</h4>
+<p>La relación entre Joboss Care y el usuario se regirá por la normativa española vigente y cualquier controversia se someterá a los Juzgados y tribunales de la ciudad de Madrid.</p>
+</div>
+`);
+});
+</script>
+</body>
+</html>
