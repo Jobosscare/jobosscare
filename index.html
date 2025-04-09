@@ -1355,5 +1355,36 @@ createModal('Aviso Legal', `
 `);
 });
 </script>
+  <!-- Cookie Banner -->
+<div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; right: 0; background: #f0f4f8; color: #1c2a38; padding: 20px; text-align: center; font-family: sans-serif; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); z-index: 10000;">
+  <p style="margin: 0; font-size: 16px;">
+    Utilizamos cookies para mejorar tu experiencia y ofrecer servicios personalizados. 
+    <a href="/politica-de-cookies.html" style="color: #0077cc; text-decoration: underline;">Saber más</a>
+  </p>
+  <div style="margin-top: 10px;">
+    <button onclick="aceptarCookies()" style="background-color: #2e7d32; color: white; border: none; padding: 8px 16px; border-radius: 4px; margin: 0 5px; cursor: pointer;">Aceptar</button>
+    <button onclick="rechazarCookies()" style="background-color: #c62828; color: white; border: none; padding: 8px 16px; border-radius: 4px; margin: 0 5px; cursor: pointer;">Rechazar</button>
+  </div>
+</div>
+
+<script>
+  function aceptarCookies() {
+    localStorage.setItem("cookiesConsentidas", "true");
+    document.getElementById("cookie-banner").style.display = "none";
+    // Aquí podrías cargar Google Analytics u otros scripts si los tienes
+  }
+
+  function rechazarCookies() {
+    localStorage.setItem("cookiesConsentidas", "false");
+    document.getElementById("cookie-banner").style.display = "none";
+  }
+
+  window.onload = function () {
+    const consentimiento = localStorage.getItem("cookiesConsentidas");
+    if (consentimiento === "true" || consentimiento === "false") {
+      document.getElementById("cookie-banner").style.display = "none";
+    }
+  };
+</script>
 </body>
 </html>
