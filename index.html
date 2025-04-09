@@ -896,15 +896,6 @@ targetContent.classList.add('active');
 </div>
 <div class="flex items-start">
 <div class="w-10 h-10 flex items-center justify-center bg-blue-100 rounded-full mr-4 shrink-0">
-<i class="ri-phone-line text-primary"></i>
-</div>
-<div>
-<h4 class="font-bold text-gray-800 mb-1">Teléfono</h4>
-<p class="text-gray-600">+34 600 123 456</p>
-</div>
-</div>
-<div class="flex items-start">
-<div class="w-10 h-10 flex items-center justify-center bg-blue-100 rounded-full mr-4 shrink-0">
 <i class="ri-time-line text-primary"></i>
 </div>
 <div>
@@ -1074,29 +1065,96 @@ behavior: 'smooth'
 // Form submission handling for CV form
 document.getElementById('cv-form').addEventListener('submit', function(e) {
 e.preventDefault();
-const formData = new FormData(this);
-const subject = 'Nuevo CV recibido';
-let body = '';
-for (let [key, value] of formData.entries()) {
-if (key !== 'cv') {
-body += `${key}: ${value}\n`;
-}
-}
-body += '\nSe ha adjuntado un CV.';
-window.location.href = `mailto:hola@joboss.es?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+const form = this;
+const formData = new FormData(form);
+// Simulación de envío de email (en producción se conectaría con un backend real)
+// Mostrar mensaje de carga
+const loadingMessage = document.createElement('div');
+loadingMessage.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center';
+loadingMessage.innerHTML = `
+  <div class="bg-white p-6 rounded-lg shadow-xl max-w-md w-full text-center">
+    <div class="animate-spin w-12 h-12 border-4 border-primary border-t-transparent rounded-full mx-auto mb-4"></div>
+    <p class="text-gray-700">Enviando información...</p>
+  </div>
+`;
+document.body.appendChild(loadingMessage);
+// Simular envío (en producción, aquí iría la llamada al backend)
+setTimeout(() => {
+  // Eliminar mensaje de carga
+  loadingMessage.remove();
+  
+  // Mostrar mensaje de éxito
+  const successMessage = document.createElement('div');
+  successMessage.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center';
+  successMessage.innerHTML = `
+    <div class="bg-white p-6 rounded-lg shadow-xl max-w-md w-full text-center">
+      <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+        <i class="ri-check-line ri-2x"></i>
+      </div>
+      <h3 class="text-xl font-bold text-gray-800 mb-2">¡Enviado con éxito!</h3>
+      <p class="text-gray-600 mb-6">Hemos recibido tu CV correctamente. Nos pondremos en contacto contigo lo antes posible.</p>
+      <button class="bg-primary text-white px-6 py-2 !rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition-colors">Aceptar</button>
+    </div>
+  `;
+  document.body.appendChild(successMessage);
+  
+  // Cerrar el mensaje al hacer clic en el botón
+  successMessage.querySelector('button').addEventListener('click', () => {
+    successMessage.remove();
+  });
+  
+  // Limpiar el formulario
+  form.reset();
+}, 1500);
+// En un entorno real, aquí se enviaría el formData a un endpoint del servidor
+// que procesaría los datos y enviaría el email con el archivo adjunto
 });
 // Form submission handling for contact form
 document.getElementById('contacto-form').addEventListener('submit', function(e) {
 e.preventDefault();
-const formData = new FormData(this);
-const subject = encodeURIComponent(formData.get('asunto'));
-let body = '';
-for (let [key, value] of formData.entries()) {
-if (key !== 'asunto') {
-body += `${key}: ${value}\n`;
-}
-}
-window.location.href = `mailto:hola@joboss.es?subject=${subject}&body=${encodeURIComponent(body)}`;
+const form = this;
+const formData = new FormData(form);
+// Simulación de envío de email (en producción se conectaría con un backend real)
+// Mostrar mensaje de carga
+const loadingMessage = document.createElement('div');
+loadingMessage.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center';
+loadingMessage.innerHTML = `
+  <div class="bg-white p-6 rounded-lg shadow-xl max-w-md w-full text-center">
+    <div class="animate-spin w-12 h-12 border-4 border-primary border-t-transparent rounded-full mx-auto mb-4"></div>
+    <p class="text-gray-700">Enviando mensaje...</p>
+  </div>
+`;
+document.body.appendChild(loadingMessage);
+// Simular envío (en producción, aquí iría la llamada al backend)
+setTimeout(() => {
+  // Eliminar mensaje de carga
+  loadingMessage.remove();
+  
+  // Mostrar mensaje de éxito
+  const successMessage = document.createElement('div');
+  successMessage.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center';
+  successMessage.innerHTML = `
+    <div class="bg-white p-6 rounded-lg shadow-xl max-w-md w-full text-center">
+      <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+        <i class="ri-check-line ri-2x"></i>
+      </div>
+      <h3 class="text-xl font-bold text-gray-800 mb-2">¡Mensaje enviado!</h3>
+      <p class="text-gray-600 mb-6">Hemos recibido tu mensaje correctamente. Te responderemos a la mayor brevedad posible.</p>
+      <button class="bg-primary text-white px-6 py-2 !rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition-colors">Aceptar</button>
+    </div>
+  `;
+  document.body.appendChild(successMessage);
+  
+  // Cerrar el mensaje al hacer clic en el botón
+  successMessage.querySelector('button').addEventListener('click', () => {
+    successMessage.remove();
+  });
+  
+  // Limpiar el formulario
+  form.reset();
+}, 1500);
+// En un entorno real, aquí se enviaría el formData a un endpoint del servidor
+// que procesaría los datos y enviaría el email
 });
 // Add event listeners for privacy policy links in forms
 document.getElementById('privacidad-link-form').addEventListener('click', function(e) {
